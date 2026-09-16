@@ -1,14 +1,20 @@
+# Local development services used by the backend.
 services:
   postgres:
+    # PostgreSQL database image for persistent task data later.
     image: postgres:16-alpine
     environment:
+      # Credentials and database name used by the local container.
       POSTGRES_USER: taskapi
       POSTGRES_PASSWORD: taskapi
       POSTGRES_DB: taskdb
     ports:
+      # Expose container port 5432 as localhost:5433.
       - "5433:5432"
 
   redis:
+    # Redis service for caching or background jobs later.
     image: redis:7-alpine
     ports:
+      # Expose container port 6379 as localhost:6380.
       - "6380:6379"
